@@ -1,10 +1,9 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
-import { BoardState, Player } from "../types";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+import { BoardState, Player } from "../types.ts";
 
 export async function analyzeBoard(board: BoardState, currentPlayer: Player) {
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   const boardStr = board.map(row => 
     row.map(p => p ? (p.player === 'red' ? (p.isKing ? 'RK' : 'R') : (p.isKing ? 'BK' : 'B')) : '.').join(' ')
   ).join('\n');
@@ -37,9 +36,9 @@ export async function analyzeBoard(board: BoardState, currentPlayer: Player) {
       }
     });
 
-    return JSON.parse(response.text);
+    return JSON.parse(response.text || '{}');
   } catch (err) {
     console.error("Gemini analysis failed", err);
-    return null;
+    throw err;
   }
 }

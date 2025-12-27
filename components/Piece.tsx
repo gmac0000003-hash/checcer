@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Player } from '../types';
+import { Player } from '../types.ts';
 
 interface PieceProps {
   player: Player;
@@ -14,12 +14,12 @@ const Piece: React.FC<PieceProps> = ({ player, isKing, isSelected }) => {
     ? "bg-red-600 border-4 border-red-800" 
     : "bg-zinc-900 border-4 border-zinc-950";
   
-  const selectedClasses = isSelected ? "ring-4 ring-yellow-400 scale-110" : "";
+  const selectedClasses = isSelected ? "ring-4 ring-amber-400 scale-110" : "";
 
   return (
     <div className={`${baseClasses} ${colorClasses} ${selectedClasses}`}>
       {isKing && (
-        <span className="text-yellow-400 text-xl font-bold">★</span>
+        <span className="text-amber-400 text-lg font-bold">★</span>
       )}
       <div className="w-3/4 h-3/4 rounded-full border border-white/10 opacity-30"></div>
     </div>
