@@ -1,0 +1,5 @@
+{
+  "name": "Master Checkers PWA",
+  "description": "A sleek, professional checkers game with offline PWA support and an AI analyst powered by Gemini.",
+  "requestFramePermissions": []
+}
